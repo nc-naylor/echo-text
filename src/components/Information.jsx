@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import Transcription from './Transcription';
+import Translation from './Translation';
 
-export default function Information() {
+export default function Information(props) {
+  const { output } = props;
   const [tab, setTab] = useState('transcription');
 
   return (
@@ -12,7 +15,7 @@ export default function Information() {
         <button
           onClick={() => setTab('transcription')}
           className={
-            'px-4 py-2 duration-200 font-medium ' +
+            'px-4 py-2 duration-200 ' +
             (tab === 'transcription'
               ? ' bg-indigo-400 text-white'
               : ' text-indigo-400 hover:text-indigo-600')
@@ -23,13 +26,34 @@ export default function Information() {
         <button
           onClick={() => setTab('translation')}
           className={
-            'px-4 py-2 duration-200 font-medium ' +
+            'px-4 py-2 duration-200 ' +
             (tab === 'translation'
               ? ' bg-indigo-400 text-white'
               : ' text-indigo-400 hover:text-indigo-600')
           }
         >
           Translation
+        </button>
+      </div>
+      <div className='my-8 flex flex-col'>
+        {tab === 'transcription' ? (
+          <Transcription {...props} />
+        ) : (
+          <Translation {...props} />
+        )}
+      </div>
+      <div className='flex items-center gap-4 mx-auto'>
+        <button
+          title='Copy'
+          className='bg-white text-indigo-400 rounded px-2 aspect-square grid place-items-center shadow-md hover:text-indigo-500 duration-200'
+        >
+          <i className='fa-solid fa-copy'></i>
+        </button>
+        <button
+          title='Download'
+          className='bg-white text-indigo-400 rounded px-2 aspect-square grid place-items-center shadow-md hover:text-indigo-500 duration-200'
+        >
+          <i className='fa-solid fa-download'></i>
         </button>
       </div>
     </main>
