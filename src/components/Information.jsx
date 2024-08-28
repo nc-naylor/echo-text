@@ -31,7 +31,6 @@ export default function Information(props) {
           break;
         case 'update':
           setTranslation(e.data.output);
-          console.log(e.data.output);
           break;
         case 'complete':
           setTranslating(false);
