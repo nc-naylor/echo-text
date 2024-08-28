@@ -1,8 +1,7 @@
 import React from 'react';
 
 export default function Transcription(props) {
-  const { output } = props;
-  const finalText = output.map((val) => val.text);
+  const { textElement } = props;
 
-  return <div>{finalText}</div>;
+  return <div>{textElement}</div>;
 }
